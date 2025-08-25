@@ -1,8 +1,5 @@
 using Photon.Pun;
 using Photon.Realtime;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -14,9 +11,21 @@ public class LoobyUiManagemnt : MonoBehaviourPunCallbacks
     [SerializeField] TMP_InputField roomNameInput;
     [SerializeField] TMP_Dropdown roomPlayerMaxPlayerOptin;
 
+    int maxPlayer;
+
     private void Start()
     {
         ShowRMPanel();
+    }
+
+    public int PlayerNumberManagemnt()
+    {
+        if(roomPlayerMaxPlayerOptin.value == 0)
+            maxPlayer = 2;
+        else if (roomPlayerMaxPlayerOptin.value == 1)
+            maxPlayer = 4;
+
+        return maxPlayer;
     }
 
     public void ShowRMPanel()
@@ -60,8 +69,10 @@ public class LoobyUiManagemnt : MonoBehaviourPunCallbacks
 
             return;
         }
-        RoomOptions roomOptions = new RoomOptions() { IsOpen = true, MaxPlayers = 4 };
+        RoomOptions roomOptions = new RoomOptions() { IsOpen = true, MaxPlayers = PlayerNumberManagemnt()};
         PhotonNetwork.CreateRoom(roomNameInput.text, roomOptions);
+
+        Debug.Log(PlayerNumberManagemnt());
     }
 
     public void JoinToRoom()

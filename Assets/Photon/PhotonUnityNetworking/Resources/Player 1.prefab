@@ -580,6 +580,7 @@ MonoBehaviour:
   playerUI: {fileID: 9223242117131347626}
   playerPing: {fileID: 6277357320241157175}
   playerHealthText: {fileID: 8244448954792936031}
+  helth: 0
   normaleSpeed: 0
   croushSpeed: 0
   isCrawshing: 0
