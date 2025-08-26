@@ -5,6 +5,7 @@ using Photon.Pun.Demo.PunBasics;
 using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControler : MonoBehaviour, IPunObservable
 {
@@ -37,11 +38,13 @@ public class PlayerControler : MonoBehaviour, IPunObservable
     [SerializeField] Canvas playerUI;
     [SerializeField] TextMeshProUGUI playerPing;
     [SerializeField] TextMeshPro playerHealthText;
+    [SerializeField] Slider playerHealthSlider;
 
     Vector3 moveDirection;
     Vector3 netWorkTransformPosition;
-    Quaternion netWorkTransformRotation;
     Vector3 savePosition;
+
+    Quaternion netWorkTransformRotation;
     Quaternion NetworCamerRotetion;
 
     float rotX, rotY;
@@ -96,7 +99,9 @@ public class PlayerControler : MonoBehaviour, IPunObservable
     {
         if(photonView.IsMine == true)
         {
-            if(canMove == true)
+            playerHealthSlider.value = playerHealth;
+
+            if (canMove == true)
                 MovePlayer(playerSpeed);
 
             MouseControle(mouseSensitivity);
