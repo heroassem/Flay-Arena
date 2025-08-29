@@ -33,7 +33,7 @@ public class GetWepon : MonoBehaviour
 
                 photonView.RPC("GetWeaponFP", RpcTarget.AllBuffered, weaponID);
 
-                foreach (weponProbertis wp in FindObjectsOfType<weponProbertis>())
+                foreach (WeaponPropirtis wp in FindObjectsOfType<WeaponPropirtis>())
                 {
                     if (wp.weaponPhotonView.IsMine)
                     {
@@ -47,7 +47,7 @@ public class GetWepon : MonoBehaviour
 
             if(done)
             {
-                weponProbertis w = PhotonView.Find(amoID).GetComponent<weponProbertis>();
+                WeaponPropirtis w = PhotonView.Find(amoID).GetComponent<WeaponPropirtis>();
 
                 if (w != null) 
                 {

@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 4354662465899742226}
   - component: {fileID: 3938674133713135143}
   - component: {fileID: 7711689393127766782}
-  - component: {fileID: 7725424955626461202}
   - component: {fileID: 5938993822377207678}
+  - component: {fileID: 3002092500260704744}
   m_Layer: 0
   m_Name: M4_8
   m_TagString: Untagged
@@ -144,33 +144,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponPlayerOwner: 0
---- !u!114 &7725424955626461202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1117582899397640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ee744d067318fd4cb5b80a5af3a5ae1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weponDamage: 20
-  weponRange: 50
-  weponFireTime: 0.03
-  weponReloadTime: 1
-  weaponAmo: 30
-  weaponMaxAmo: 30
-  weaponBulletCount: 1
-  weaponBulletRangeX: 0
-  weaponBulletRangeY: 0
-  weaponAnimeParametarName: M4_8
-  weaponPhotonView: {fileID: 4354662465899742226}
-  firePoint: {fileID: 8465093191878879948}
-  animator: {fileID: 5938993822377207678}
-  weaponBulletEffect: {fileID: 5195448713391780706, guid: 6d23050129c12694093d3d577a15a1be, type: 3}
-  weaponFireEffect: {fileID: 6561418031803134054}
 --- !u!95 &5938993822377207678
 Animator:
   serializedVersion: 5
@@ -192,6 +165,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3002092500260704744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117582899397640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdc30d44bd09379408e88ca0cdbe9a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weponDamage: 10
+  weponRange: 50
+  weponFireTime: 0.03
+  weponReloadTime: 1
+  weaponAmo: 50
+  weaponMaxAmo: 50
+  weaponBulletCount: 1
+  weaponBulletRangeX: 2
+  weaponBulletRangeY: 2
+  weaponAnimeParametarName: M4_8
+  weaponPhotonView: {fileID: 4354662465899742226}
+  firePoint: {fileID: 8465093191878879948}
+  animator: {fileID: 5938993822377207678}
+  weaponBulletEffect: {fileID: 5195448713391780706, guid: 6d23050129c12694093d3d577a15a1be, type: 3}
+  weaponFireEffect: {fileID: 6561418031803134054}
 --- !u!1 &1426050648627750
 GameObject:
   m_ObjectHideFlags: 0

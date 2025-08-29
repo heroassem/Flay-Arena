@@ -808,7 +808,7 @@ MonoBehaviour:
   playerCameraMap: {fileID: 862091233056926032}
   playerAnimator: {fileID: 7761861106876656028}
   playerModel: {fileID: 5304149022542003325}
-  playerSpeed: 6
+  playerSpeed: 4
   jumpForce: 4
   gravityScale: 8
   mouseSensitivity: 2

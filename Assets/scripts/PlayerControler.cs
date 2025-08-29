@@ -48,7 +48,7 @@ public class PlayerControler : MonoBehaviour, IPunObservable
     Quaternion NetworCamerRotetion;
 
     float rotX, rotY;
-    float lerpMovmentControl = 100f;
+    float lerpMovmentControl = 10f;
     [HideInInspector] public float helth;
     [HideInInspector] public float normaleSpeed;
     [HideInInspector] public float croushSpeed;
@@ -119,6 +119,7 @@ public class PlayerControler : MonoBehaviour, IPunObservable
                 {
                     gameManagemntView.RPC("PlayerRespown", RpcTarget.AllBuffered, photonView.ViewID, playerTeem);
                     gameManagemntView.RPC("ScoreTeemSystem", RpcTarget.AllBuffered, playerTeem);
+                    playerHealth = helth;
                 }
             }
         }
@@ -135,7 +136,7 @@ public class PlayerControler : MonoBehaviour, IPunObservable
         float MoveX = Input.GetAxis("Horizontal");
         float MoveZ = Input.GetAxis("Vertical");
 
-        Vector3 direction = new Vector3(MoveX, 0,MoveZ);
+        Vector3 direction = new Vector3(MoveX, 0, MoveZ).normalized;
 
         Vector3 moveLerp = transform.TransformDirection(direction * speed);
 
@@ -144,8 +145,10 @@ public class PlayerControler : MonoBehaviour, IPunObservable
 
         if (controler.isGrounded)
         {
-            lerpMovmentControl = 10f;
+            lerpMovmentControl = 5f;
             isJumping = true;
+
+            playerSpeed = Mathf.Lerp(playerSpeed, speed, 0.1f);
 
             if (Input.GetButtonDown("Jump") && isCrawshing == false)
             {
@@ -241,7 +244,6 @@ public class PlayerControler : MonoBehaviour, IPunObservable
         canMove = false;
         yield return new WaitForSeconds(0.1f);
 
-        playerHealth = helth;
         canMove = true;
 
         yield return new WaitForSeconds(5f);
