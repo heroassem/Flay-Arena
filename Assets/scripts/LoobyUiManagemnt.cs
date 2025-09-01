@@ -18,15 +18,7 @@ public class LoobyUiManagemnt : MonoBehaviourPunCallbacks
         ShowRMPanel();
     }
 
-    public int PlayerNumberManagemnt()
-    {
-        if(roomPlayerMaxPlayerOptin.value == 0)
-            maxPlayer = 2;
-        else if (roomPlayerMaxPlayerOptin.value == 1)
-            maxPlayer = 4;
-
-        return maxPlayer;
-    }
+    public int PlayerNumberManagemnt() => maxPlayer = roomPlayerMaxPlayerOptin.value == 0? 2 : 4;
 
     public void ShowRMPanel()
     {
@@ -104,11 +96,13 @@ public class LoobyUiManagemnt : MonoBehaviourPunCallbacks
         PhotonNetwork.LoadLevel("Match");
         Debug.Log("Room created successfully: " + PhotonNetwork.CurrentRoom.Name);
         Debug.Log("Room Players : " + PhotonNetwork.CurrentRoom.PlayerCount);
+        PublicClass.isStartedMatch = true;
     }
     public override void OnJoinedRoom()
     {
         PhotonNetwork.LoadLevel("Match");
         Debug.Log("Room joinet successfully: " + PhotonNetwork.CurrentRoom.Name);
         Debug.Log("Room Players : " + PhotonNetwork.CurrentRoom.PlayerCount);
+        PublicClass.isStartedMatch = true;
     }
 }

@@ -30,8 +30,6 @@ public class GameManagemnt : MonoBehaviour, IPunObservable
     {
         PhotonNetwork.SendRate = 15;
         PhotonNetwork.SerializationRate = 7;
-
-        SpownPlayer();
     }
 
     public void Update()
