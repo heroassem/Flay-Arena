@@ -11,6 +11,9 @@ public class GameManagemnt : MonoBehaviour, IPunObservable
     [Header("Game Settings")]
     [SerializeField] public float gameTime; // 5 minutes
 
+    [Header("Match Objects")]
+    [SerializeField] public Camera mainCamera;
+
     [Header("NetWork Settings")]
     [SerializeField] public PhotonView photonView;
 
@@ -18,6 +21,7 @@ public class GameManagemnt : MonoBehaviour, IPunObservable
     [SerializeField] TextMeshProUGUI redTeemScore;
     [SerializeField] TextMeshProUGUI blueTeemScore;
     [SerializeField] TextMeshProUGUI timerText;
+    [SerializeField] public GameObject timerUI;
 
     [Header("Spowne Point")]
     [SerializeField] Transform redCorner;
@@ -30,14 +34,8 @@ public class GameManagemnt : MonoBehaviour, IPunObservable
     {
         PhotonNetwork.SendRate = 15;
         PhotonNetwork.SerializationRate = 7;
-    }
 
-    public void Update()
-    {
-        if(photonView.IsMine)
-        {
-            Timer(ref gameTime);
-        }
+        if (photonView.IsMine) timerUI.SetActive(false);
     }
 
     public void Timer(ref float timeSeconds)
@@ -120,7 +118,7 @@ public class GameManagemnt : MonoBehaviour, IPunObservable
         {
             if (playerTeem == "red")
             {
-                player.transform.position = new Vector3(Random.Range(redCorner.position.x - 3, redCorner.position.x + 3), redCorner.position.y + 2, redCorner.position.z);
+                player.transform.position = new Vector3(Random.Range(redCorner.position.x - 3, redCorner.position.x + 3), redCorner.position.y + 3, redCorner.position.z);
 
                 PlayerControler playerControler = player.GetComponent<PlayerControler>();
 
@@ -131,7 +129,7 @@ public class GameManagemnt : MonoBehaviour, IPunObservable
             }
             else if (playerTeem == "blue")
             {
-                player.transform.position = new Vector3(Random.Range(blueCorner.position.x - 3, blueCorner.position.x + 2), blueCorner.position.y + 2, blueCorner.position.z);
+                player.transform.position = new Vector3(Random.Range(blueCorner.position.x - 3, blueCorner.position.x + 3), blueCorner.position.y + 2, blueCorner.position.z);
 
                 PlayerControler playerControler = player.GetComponent<PlayerControler>();
 
@@ -141,5 +139,12 @@ public class GameManagemnt : MonoBehaviour, IPunObservable
                 }
             }
         }
+    }
+
+    [PunRPC]
+    public void PlayersReady()
+    {
+        PublicClass.isAllPlayersReady = true;
+        mainCamera.enabled = false;
     }
 }

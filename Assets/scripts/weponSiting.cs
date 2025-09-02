@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using Photon.Pun;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class weponSiting : MonoBehaviour
@@ -22,14 +21,7 @@ public class weponSiting : MonoBehaviour
 
         if (time >= 0.1f)
         {
-            if(photonView.IsMine && photonView != null)
-            {
-                targetLayer = LayerMask.NameToLayer("gun");
-            }
-            else
-            {
-                targetLayer = LayerMask.NameToLayer("Default");
-            }
+            targetLayer = photonView.IsMine && photonView != null? LayerMask.NameToLayer("gun") : LayerMask.NameToLayer("Default");
 
             weaponLayer.layer = targetLayer;
 

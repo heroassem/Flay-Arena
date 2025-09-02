@@ -48,7 +48,7 @@ public class PlayerControler : MonoBehaviour, IPunObservable
     Quaternion NetworCamerRotetion;
 
     float rotX, rotY;
-    float lerpMovmentControl = 10f;
+    float lerpMovmentControl = 100f;
     [HideInInspector] public float helth;
     [HideInInspector] public float normaleSpeed;
     [HideInInspector] public float croushSpeed;
@@ -145,7 +145,7 @@ public class PlayerControler : MonoBehaviour, IPunObservable
 
         if (controler.isGrounded)
         {
-            lerpMovmentControl = 5f;
+            lerpMovmentControl = 100f;
             isJumping = true;
 
             playerSpeed = Mathf.Lerp(playerSpeed, speed, 0.1f);

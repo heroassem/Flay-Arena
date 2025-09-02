@@ -14,7 +14,6 @@ public class GetWepon : MonoBehaviour
 
     [Header("Network Siting")]
     public PhotonView photonView;
-
  
     string amo;
 

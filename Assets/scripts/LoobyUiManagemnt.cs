@@ -94,15 +94,11 @@ public class LoobyUiManagemnt : MonoBehaviourPunCallbacks
     public override void OnCreatedRoom()
     {
         PhotonNetwork.LoadLevel("Match");
-        Debug.Log("Room created successfully: " + PhotonNetwork.CurrentRoom.Name);
-        Debug.Log("Room Players : " + PhotonNetwork.CurrentRoom.PlayerCount);
         PublicClass.isStartedMatch = true;
     }
     public override void OnJoinedRoom()
     {
         PhotonNetwork.LoadLevel("Match");
-        Debug.Log("Room joinet successfully: " + PhotonNetwork.CurrentRoom.Name);
-        Debug.Log("Room Players : " + PhotonNetwork.CurrentRoom.PlayerCount);
         PublicClass.isStartedMatch = true;
     }
 }
